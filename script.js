@@ -1,11 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Menu Mobile
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    
+    menuToggle.addEventListener('click', function() {
+        navList.classList.toggle('active');
+        this.innerHTML = navList.classList.contains('active') ? 
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Fechar menu ao clicar em um item (mobile)
+    document.querySelectorAll('.nav-list a').forEach(item => {
+        item.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                navList.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    });
+    
     // Simulador de consumo
     const calcularBtn = document.getElementById('calcular');
     const resultadoDiv = document.getElementById('resultado');
     const consumoKwh = document.getElementById('consumoKwh');
     const custo = document.getElementById('custo');
     
-    // Valores de potência em Watts
     const potencias = {
         lampada: 10,
         chuveiro: 5500,
@@ -13,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         geladeira: 50
     };
     
-    // Nomes para exibição
     const nomesEletro = {
         lampada: "Lâmpada LED",
         chuveiro: "Chuveiro elétrico",
@@ -21,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         geladeira: "Geladeira"
     };
     
-    // Evento de cálculo
     calcularBtn.addEventListener('click', function() {
         const eletrodomestico = document.getElementById('eletrodomestico').value;
         const horas = parseFloat(document.getElementById('horas').value);
@@ -33,12 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Cálculo do consumo
         const potencia = potencias[eletrodomestico];
         const consumo = (potencia * horas * dias) / 1000;
         const custoTotal = consumo * tarifa;
         
-        // Exibir resultados
         consumoKwh.textContent = `Consumo mensal de ${nomesEletro[eletrodomestico]}: ${consumo.toFixed(2)} kWh`;
         custo.textContent = `Custo estimado: R$ ${custoTotal.toFixed(2)}`;
         
@@ -125,6 +140,10 @@ const highContrastStyles = `
 .high-contrast .curiosidade-card {
     background-color: #333 !important;
     border: 2px solid #ff0 !important;
+}
+
+.high-contrast .mobile-menu-toggle {
+    color: #ff0 !important;
 }
 `;
 
