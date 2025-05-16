@@ -39,12 +39,12 @@ header {
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
     margin-bottom: 0.5rem;
 }
 
 header p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     opacity: 0.9;
 }
 
@@ -56,7 +56,17 @@ nav {
     z-index: 100;
 }
 
-nav ul {
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.nav-list {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -64,20 +74,21 @@ nav ul {
     flex-wrap: wrap;
 }
 
-nav li {
+.nav-list li {
     margin: 0 1rem;
 }
 
-nav a {
+.nav-list a {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
+    display: block;
 }
 
-nav a:hover {
+.nav-list a:hover {
     background-color: var(--secondary-color);
 }
 
@@ -97,7 +108,7 @@ section {
 h2 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -106,7 +117,7 @@ h2 {
 h3 {
     color: var(--dark-color);
     margin-bottom: 0.8rem;
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
 }
 
 .section-subtitle {
@@ -281,36 +292,57 @@ footer p {
     margin-bottom: 0.5rem;
 }
 
-/* Responsividade */
+/* Responsividade - Mobile */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
+    .mobile-menu-toggle {
+        display: block;
+        margin: 0 auto;
     }
-    
-    nav ul {
+
+    .nav-list {
+        display: none;
         flex-direction: column;
         align-items: center;
+        padding: 0;
     }
-    
-    nav li {
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li {
         margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
     }
-    
+
+    .nav-list a {
+        padding: 1rem;
+    }
+
     .tips-grid, .curiosidades-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    section {
+        padding: 1rem;
+    }
+
     .simulator-section {
         padding: 1rem;
     }
-    
+
     .curiosidade-card {
         padding: 1.2rem;
+    }
+
+    .hero-image {
+        max-height: 250px;
     }
 }
 
 @media print {
-    nav, footer {
+    nav, footer, .mobile-menu-toggle {
         display: none;
     }
     
