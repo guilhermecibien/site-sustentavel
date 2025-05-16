@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economize Hoje, Viva Melhor Amanhã | Conscientização Ambiental</title>
+    <meta name="description" content="Site com dicas práticas para economizar água e energia, simulador de consumo e pontos de coleta em sua cidade">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1>Economize Hoje, Viva Melhor Amanhã</h1>
+            <p>Pequenas ações fazem grande diferença para o nosso futuro</p>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#agua">Água</a></li>
+                <li><a href="#energia">Energia</a></li>
+                <li><a href="#simulador">Simulador</a></li>
+                <li><a href="#mapa">Pontos de Coleta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+        <!-- Seção Inicial -->
+        <section id="inicio" class="intro-section">
+            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Mãos segurando planta com gotas d'água" class="hero-image">
+            
+            <h2>Por que economizar água e energia?</h2>
+            <p>O uso consciente dos recursos naturais é essencial para garantir um futuro sustentável para as próximas gerações. Na nossa comunidade, pequenas mudanças de hábito podem resultar em grandes economias e benefícios ambientais.</p>
+            <p>Este site traz informações práticas para você adotar no seu dia a dia, ajudando a preservar o meio ambiente e ainda economizar na conta de água e luz.</p>
+        </section>
+
+        <!-- Seção Água -->
+        <section id="agua" class="tips-section">
+            <h2><i class="fas fa-tint"></i> Dicas para economizar água</h2>
+            
+            <div class="tip-card">
+                <h3>Banhos conscientes</h3>
+                <p>Reduza o tempo no chuveiro para 5 minutos. Um banho de 15 minutos pode gastar até 135 litros de água!</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Reaproveitamento</h3>
+                <p>Use a água da máquina de lavar para limpar quintais e calçadas. A água da chuva também pode ser coletada para regar plantas.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Vazamentos</h3>
+                <p>Um buraco de 2mm em um cano desperdiça até 3.200 litros por dia. Conserte vazamentos imediatamente.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Lavagem de louça</h3>
+                <p>Ensaboe toda a louça com a torneira fechada e só depois enxágue. Isso pode economizar até 20 litros por minuto.</p>
+            </div>
+        </section>
+
+        <!-- Seção Energia -->
+        <section id="energia" class="tips-section">
+            <h2><i class="fas fa-lightbulb"></i> Dicas para economizar energia</h2>
+            
+            <div class="tip-card">
+                <h3>Iluminação</h3>
+                <p>Substitua lâmpadas incandescentes por LED, que consomem até 80% menos energia e duram mais.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Eletrodomésticos</h3>
+                <p>Prefira aparelhos com selo Procel A, que são os mais eficientes. Não deixe equipamentos em standby.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Climatização</h3>
+                <p>Use ventiladores em vez de ar condicionado quando possível. Mantenha filtros de ar condicionado limpos.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Horário de pico</h3>
+                <p>Evite usar muitos aparelhos entre 18h e 21h, quando o consumo é maior e a tarifa mais cara.</p>
+            </div>
+        </section>
+
+        <!-- Simulador -->
+        <section id="simulador" class="simulator-section">
+            <h2><i class="fas fa-calculator"></i> Simulador de Consumo</h2>
+            <p>Calcule quanto você gasta com seus eletrodomésticos:</p>
+            
+            <form id="consumoForm">
+                <div class="form-group">
+                    <label for="eletrodomestico">Eletrodoméstico:</label>
+                    <select id="eletrodomestico" required>
+                        <option value="">Selecione...</option>
+                        <option value="lampada">Lâmpada LED (10W)</option>
+                        <option value="chuveiro">Chuveiro elétrico (5500W)</option>
+                        <option value="tv">TV LED 42" (100W)</option>
+                        <option value="geladeira">Geladeira (50W)</option>
+                        <option value="maquina">Máquina de lavar (1000W)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="horas">Horas de uso por dia:</label>
+                    <input type="number" id="horas" min="0" max="24" step="0.5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dias">Dias no mês:</label>
+                    <input type="number" id="dias" min="1" max="31" value="30" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tarifa">Tarifa (R$/kWh):</label>
+                    <input type="number" id="tarifa" min="0" step="0.01" value="0.75" required>
+                </div>
+                
+                <button type="button" id="calcular">Calcular</button>
+            </form>
+            
+            <div id="resultado" class="resultado">
+                <h3>Resultado:</h3>
+                <p id="consumoKwh">Consumo mensal: 0 kWh</p>
+                <p id="custo">Custo estimado: R$ 0,00</p>
+            </div>
+        </section>
+
+        <!-- Checklist -->
+        <section class="checklist-section">
+            <h2><i class="fas fa-clipboard-check"></i> Checklist de Ações Sustentáveis</h2>
+            <p>Baixe ou imprima esta lista de ações para acompanhar suas economias:</p>
+            
+            <div class="checklist-container">
+                <h3>Checklist para Economizar em Casa</h3>
+                <ul class="checklist">
+                    <li>□ Reduzir tempo no banho para 5 minutos</li>
+                    <li>□ Desligar luzes ao sair do ambiente</li>
+                    <li>□ Consertar torneiras com vazamentos</li>
+                    <li>□ Usar eletrodomésticos fora do horário de pico</li>
+                    <li>□ Reaproveitar água da máquina de lavar</li>
+                    <li>□ Substituir lâmpadas por LED</li>
+                    <li>□ Desligar aparelhos da tomada quando não em uso</li>
+                    <li>□ Separar resíduos para reciclagem</li>
+                </ul>
+                
+                <div class="checklist-actions">
+                    <button id="imprimirChecklist" class="print-btn">Imprimir Checklist</button>
+                    <a href="checklist-acoes-sustentaveis.pdf" download class="download-btn">Baixar PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa -->
+        <section id="mapa" class="map-section">
+            <h2><i class="fas fa-map-marker-alt"></i> Pontos de Descarte na Cidade</h2>
+            <p>Encontre locais para descartar resíduos especiais corretamente:</p>
+            
+            <div class="map-container">
+                <!-- Mapa estático com pontos marcados -->
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=-23.5505,-46.6333&zoom=13&size=600x400&maptype=roadmap&markers=color:green%7C-23.5505,-46.6333&markers=color:blue%7C-23.5555,-46.6383&markers=color:red%7C-23.5455,-46.6283&key=SUA_CHAVE_API" 
+                     alt="Mapa da cidade com pontos de coleta" class="static-map">
+                
+                <div class="map-legend">
+                    <h4>Legenda:</h4>
+                    <ul>
+                        <li><span class="legend-icon green"></span> Lixo Eletrônico</li>
+                        <li><span class="legend-icon blue"></span> Óleo de Cozinha</li>
+                        <li><span class="legend-icon red"></span> Recicláveis</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="locations-list">
+                <h3>Principais pontos de coleta:</h3>
+                <ul>
+                    <li><strong>Ecoponto Central</strong> - Rua Principal, 123 (aceita recicláveis e eletrônicos)</li>
+                    <li><strong>Supermercado Verde</strong> - Avenida Secundária, 456 (coleta óleo de cozinha)</li>
+                    <li><strong>Escola Municipal</strong> - Praça da Educação, s/n (pilhas e baterias)</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>© 2023 Conscientização Ambiental Local</p>
+            <p>Desenvolvido para a comunidade com ❤️</p>
+            <p>Contato: conscientizacao@local.com | (11) 98765-4321</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
